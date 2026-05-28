@@ -1,13 +1,2663 @@
-# Party Kabanas
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Party Kabanas | Festas do Pijama Infantis</title>
+  <meta name="description" content="Festas do pijama infantis com cabaninhas personalizadas, decoracao delicada e cuidado em cada detalhe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-50: #fff4f9;
+      --pink-100: #fbe4ef;
+      --pink-300: #ef9bc2;
+      --pink-500: #db6298;
+      --pink-700: #b84279;
+      --lilac-100: #eee3ff;
+      --lilac-500: #9480c6;
+      --blue-50: #eef9ff;
+      --cream: #fffaf7;
+      --gold: #d7af60;
+      --ink: #6c4f66;
+      --muted: #8c7a98;
+      --shadow: 0 22px 54px rgba(183, 92, 136, .22);
+    }
 
-Site institucional estático da Party Kabanas.
+    * {
+      box-sizing: border-box;
+    }
 
-## Como publicar no GitHub Pages
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      font-family: Montserrat, Arial, sans-serif;
+      background: var(--cream);
+      overflow-x: hidden;
+    }
 
-1. Crie um repositório no GitHub.
-2. Envie todos os arquivos desta pasta para a raiz do repositório.
-3. No GitHub, acesse `Settings > Pages`.
-4. Em `Build and deployment`, selecione `Deploy from a branch`.
-5. Escolha a branch `main` e a pasta `/root`.
+    button,
+    a {
+      font: inherit;
+    }
 
-O arquivo principal do site é `index.html`.
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: url("assets/hero1.png.png");
+      background-size: cover;
+      background-position: 58% center;
+      background-repeat: no-repeat;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero::before {
+      background:
+        linear-gradient(90deg,
+          rgba(255, 253, 254, .98) 0%,
+          rgba(255, 247, 251, .94) 20%,
+          rgba(251, 228, 239, .78) 38%,
+          rgba(255, 246, 250, .36) 56%,
+          rgba(255, 255, 255, .08) 100%);
+    }
+
+    .hero::after {
+      background:
+        radial-gradient(circle at 18% 24%, rgba(239, 155, 194, .24), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, .18), rgba(255, 241, 248, .34));
+      mix-blend-mode: soft-light;
+    }
+
+    .hero__inner {
+      width: min(1160px, calc(100% - 48px));
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 520px) 1fr;
+      align-items: center;
+      padding: clamp(28px, 5vw, 56px) 0;
+    }
+
+    .hero__content {
+      width: 100%;
+      padding-top: clamp(8px, 2vw, 18px);
+    }
+
+    .brand {
+      display: inline-block;
+      margin-bottom: clamp(16px, 3vw, 28px);
+      text-decoration: none;
+      color: var(--pink-700);
+    }
+
+    .brand__logo {
+      display: block;
+      width: clamp(156px, 14vw, 218px);
+      height: auto;
+      filter: drop-shadow(0 16px 28px rgba(184, 66, 121, .16));
+    }
+
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 9px 14px;
+      border: 1px solid rgba(219, 98, 152, .18);
+      border-radius: 999px;
+      color: var(--pink-700);
+      background: rgba(255, 255, 255, .56);
+      box-shadow: 0 10px 30px rgba(255, 186, 214, .22);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      color: #c85086;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.65rem, 4.7vw, 4.95rem);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+      overflow-wrap: normal;
+      text-shadow: 0 3px 0 rgba(255, 255, 255, .62);
+    }
+
+    .mobile-title {
+      display: none;
+    }
+
+    .hero__subtitle {
+      max-width: 580px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.35vw, 1.2rem);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 0 24px;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink-500), #e889b6);
+      box-shadow: var(--shadow);
+    }
+
+    .button--secondary {
+      color: var(--pink-700);
+      background: rgba(255, 255, 255, .66);
+      border: 1px solid rgba(219, 98, 152, .2);
+      box-shadow: 0 14px 32px rgba(148, 128, 198, .14);
+      backdrop-filter: blur(10px);
+    }
+
+    .button svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 650px;
+      margin-top: 28px;
+    }
+
+    .feature {
+      min-height: 96px;
+      padding: 18px 14px 16px;
+      border: 1px solid rgba(148, 128, 198, .15);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .48);
+      box-shadow: 0 18px 38px rgba(255, 188, 217, .16);
+      backdrop-filter: blur(12px);
+    }
+
+    .feature svg {
+      display: block;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 12px;
+      color: var(--lilac-500);
+      stroke-width: 1.55;
+    }
+
+    .feature span {
+      display: block;
+      color: #836fa8;
+      font-size: .78rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .hero__shine {
+      position: absolute;
+      left: min(8vw, 110px);
+      bottom: 8vh;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, .84), rgba(239, 155, 194, .18) 46%, transparent 70%);
+      filter: blur(2px);
+      opacity: .72;
+      z-index: -1;
+    }
+
+    .about {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: url("assets/sobre.png.png");
+      background-size: cover;
+      background-position: 64% center;
+      background-repeat: no-repeat;
+    }
+
+    .about::before,
+    .about::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .about::before {
+      background:
+        linear-gradient(90deg,
+          rgba(255, 253, 254, 1) 0%,
+          rgba(255, 251, 253, .99) 36%,
+          rgba(255, 246, 250, .9) 50%,
+          rgba(255, 246, 250, .44) 68%,
+          rgba(255, 255, 255, .06) 100%);
+    }
+
+    .about::after {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(238, 227, 255, .42), transparent 32%),
+        radial-gradient(circle at 24% 82%, rgba(255, 255, 255, .8), transparent 24%),
+        linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 241, 248, .24));
+      mix-blend-mode: soft-light;
+    }
+
+    .about__inner {
+      width: min(1160px, calc(100% - 48px));
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 520px) 1fr;
+      align-items: start;
+      padding: clamp(28px, 4vw, 42px) 0 clamp(36px, 5vw, 58px);
+    }
+
+    .about__content {
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .about__logo {
+      display: block;
+      width: clamp(146px, 12vw, 190px);
+      height: auto;
+      margin-bottom: clamp(14px, 2vw, 22px);
+      filter: drop-shadow(0 16px 28px rgba(184, 66, 121, .14));
+    }
+
+    .about__title {
+      max-width: 570px;
+      margin: 0;
+      color: var(--lilac-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.55rem, 4.5vw, 4.7rem);
+      font-weight: 700;
+      line-height: .88;
+      letter-spacing: 0;
+      text-wrap: balance;
+      text-shadow: 0 3px 0 rgba(255, 255, 255, .6);
+    }
+
+    .about__title strong {
+      display: block;
+      color: var(--pink-500);
+      font-size: 1.34em;
+      font-weight: 700;
+      line-height: .82;
+    }
+
+    .about__script {
+      display: block;
+      margin-top: 10px;
+      color: #c59a50;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.75rem, 2.8vw, 3rem);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .about__swoosh {
+      width: min(260px, 58vw);
+      height: 26px;
+      margin: 6px 0 18px 128px;
+      color: var(--pink-300);
+    }
+
+    .about__story {
+      max-width: 560px;
+      margin-top: 18px;
+      padding: 24px 28px;
+      border: 1px solid rgba(219, 98, 152, .14);
+      border-radius: 18px;
+      color: #725e88;
+      background: rgba(255, 255, 255, .74);
+      box-shadow: 0 20px 46px rgba(148, 128, 198, .14);
+      backdrop-filter: blur(14px);
+    }
+
+    .about__story h3 {
+      margin: 0 0 12px;
+      color: var(--pink-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.55rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .about__story p {
+      margin: 0;
+      font-size: clamp(.96rem, 1.08vw, 1.05rem);
+      font-weight: 500;
+      line-height: 1.62;
+    }
+
+    .about__story p + p {
+      margin-top: 10px;
+    }
+
+    .about__facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 500px;
+      margin-top: 16px;
+    }
+
+    .about__fact {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      align-items: center;
+      color: #816fa3;
+      padding: 12px;
+      border: 1px solid rgba(148, 128, 198, .14);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .52);
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .about__fact strong {
+      color: var(--pink-500);
+      font-weight: 800;
+    }
+
+    .about__icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink-300), #e679ad);
+      box-shadow: 0 16px 32px rgba(219, 98, 152, .22);
+    }
+
+    .about__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke-width: 1.7;
+    }
+
+    .about__card {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 20px;
+      align-items: center;
+      max-width: 500px;
+      margin-top: 24px;
+      padding: 20px 26px;
+      border: 1px solid rgba(219, 98, 152, .14);
+      border-radius: 18px;
+      color: #796494;
+      background: rgba(255, 255, 255, .72);
+      box-shadow: 0 20px 46px rgba(148, 128, 198, .14);
+      backdrop-filter: blur(12px);
+      font-size: clamp(1rem, 1.45vw, 1.28rem);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .about__card svg {
+      width: 56px;
+      height: 56px;
+      color: var(--pink-500);
+      stroke-width: 1.45;
+    }
+
+    .about__card p {
+      margin: 0;
+    }
+
+    .process {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: url("assets/limpa.png.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .process::before,
+    .process::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .process::before {
+      background:
+        radial-gradient(ellipse at 50% 34%,
+          rgba(255, 252, 254, .82) 0%,
+          rgba(255, 249, 252, .68) 42%,
+          rgba(255, 245, 250, .34) 62%,
+          rgba(255, 239, 247, .08) 82%,
+          rgba(255, 255, 255, 0) 100%),
+        linear-gradient(90deg,
+          rgba(255, 247, 251, .24) 0%,
+          rgba(255, 248, 252, .62) 26%,
+          rgba(255, 247, 251, .58) 60%,
+          rgba(255, 238, 247, .04) 100%),
+        linear-gradient(180deg,
+          rgba(255, 247, 251, .48) 0%,
+          rgba(255, 247, 251, .2) 52%,
+          rgba(255, 238, 247, 0) 100%);
+    }
+
+    .process::after {
+      background:
+        radial-gradient(circle at 5% 12%, rgba(255, 255, 255, .9) 0 1.2%, transparent 1.6%),
+        radial-gradient(circle at 9% 21%, rgba(255, 255, 255, .72) 0 .45%, transparent .8%),
+        radial-gradient(circle at 72% 8%, rgba(255, 255, 255, .88) 0 .75%, transparent 1.1%),
+        radial-gradient(circle at 78% 15%, rgba(255, 255, 255, .76) 0 1%, transparent 1.4%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(251, 228, 239, .08));
+      mix-blend-mode: screen;
+      opacity: .92;
+    }
+
+    .process__inner {
+      width: min(1240px, calc(100% - 48px));
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: clamp(40px, 4.2vw, 58px) 0 clamp(30px, 3vw, 42px);
+      display: grid;
+      align-content: center;
+    }
+
+    .section-heading {
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--pink-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(3.1rem, 5.7vw, 5.3rem);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: 0;
+      text-shadow: 0 3px 0 rgba(255, 255, 255, .62);
+    }
+
+    .section-heading p {
+      margin: 12px auto 0;
+      color: #8f70b1;
+      font-size: clamp(1.05rem, 1.65vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .process__divider {
+      width: min(290px, 70vw);
+      height: 28px;
+      margin: 16px auto 28px;
+      color: var(--pink-300);
+    }
+
+    .steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: clamp(12px, 1.6vw, 20px);
+      align-items: start;
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: clamp(46px, 4.2vw, 62px);
+      left: 7%;
+      right: 7%;
+      height: 22px;
+      border-top: 2px dashed rgba(219, 98, 152, .26);
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    .step {
+      position: relative;
+      min-width: 0;
+      padding: 12px 10px 14px;
+      border: 1px solid rgba(255, 255, 255, .58);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .34);
+      box-shadow: 0 18px 42px rgba(148, 128, 198, .08);
+      backdrop-filter: blur(8px);
+    }
+
+    .step__icon {
+      width: clamp(82px, 7.2vw, 104px);
+      height: clamp(82px, 7.2vw, 104px);
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--lilac-500);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .76), rgba(238, 227, 255, .5));
+      border: 2px solid rgba(255, 255, 255, .78);
+      box-shadow: 0 20px 42px rgba(148, 128, 198, .14);
+      backdrop-filter: blur(12px);
+    }
+
+    .step:nth-child(odd) .step__icon {
+      color: var(--pink-500);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .78), rgba(251, 228, 239, .62));
+    }
+
+    .step__icon svg {
+      width: 42px;
+      height: 42px;
+      stroke-width: 1.55;
+    }
+
+    .step__number {
+      position: absolute;
+      top: clamp(68px, 6vw, 88px);
+      left: 12px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50% 50% 50% 10px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink-500), #ec9bc3);
+      box-shadow: 0 12px 24px rgba(219, 98, 152, .24);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .step:nth-child(even) .step__number {
+      background: linear-gradient(135deg, var(--lilac-500), #b596d9);
+    }
+
+    .step h3 {
+      margin: 0;
+      color: var(--pink-500);
+      font-size: clamp(.9rem, 1.08vw, 1.05rem);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .step:nth-child(even) h3 {
+      color: #8c6daf;
+    }
+
+    .step p {
+      margin: 9px 0 0;
+      color: #5f5668;
+      font-size: clamp(.78rem, .88vw, .88rem);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .process__assurance {
+      width: min(760px, 100%);
+      margin: clamp(26px, 3.8vw, 42px) auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(219, 98, 152, .18);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .58);
+      box-shadow: 0 20px 46px rgba(148, 128, 198, .12);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .assurance {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      gap: 8px;
+      padding: 22px;
+      text-align: center;
+      color: #775f99;
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .assurance + .assurance {
+      border-left: 1px solid rgba(148, 128, 198, .14);
+    }
+
+    .assurance svg {
+      width: 40px;
+      height: 40px;
+      color: #9273b3;
+      stroke-width: 1.5;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: 100svh;
+        background-position: 62% center;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg,
+            rgba(255, 253, 254, .98) 0%,
+            rgba(255, 247, 251, .9) 42%,
+            rgba(255, 246, 250, .42) 72%,
+            rgba(255, 255, 255, .14) 100%);
+      }
+
+      .hero__inner {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(92%, 720px);
+      }
+
+      .hero__content {
+        max-width: 560px;
+      }
+
+      h1 {
+        font-size: clamp(2.42rem, 7.4vw, 4rem);
+      }
+
+      .about {
+        background-position: 68% center;
+      }
+
+      .about__inner {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(92%, 720px);
+      }
+
+      .about__content {
+        max-width: 560px;
+      }
+
+      .about__title {
+        font-size: clamp(2.6rem, 7vw, 4.25rem);
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px 18px;
+      }
+
+      .step {
+        padding: 0 8px;
+      }
+
+      .step__number {
+        left: 12px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        min-height: 100svh;
+        background-position: 70% center;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg,
+            rgba(255, 249, 252, .9) 0%,
+            rgba(255, 246, 250, .84) 22%,
+            rgba(255, 245, 250, .74) 50%,
+            rgba(255, 249, 252, .94) 100%),
+          linear-gradient(90deg,
+            rgba(255, 255, 255, .96),
+            rgba(251, 228, 239, .58));
+      }
+
+      .hero__inner {
+        align-items: start;
+        width: min(100% - 34px, 540px);
+        padding: 24px 0 30px;
+      }
+
+      .hero__content {
+        margin: 0 auto;
+        padding-top: 0;
+        text-align: center;
+        min-width: 0;
+        max-width: 340px;
+      }
+
+      .brand {
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+
+      .brand__logo {
+        width: min(188px, 58vw);
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        margin-inline: auto;
+        font-size: .68rem;
+      }
+
+      h1 {
+        margin-inline: auto;
+        max-width: 340px;
+        font-size: clamp(1.78rem, 7.6vw, 2.08rem);
+        line-height: 1.08;
+        text-wrap: pretty;
+      }
+
+      .desktop-title {
+        display: none;
+      }
+
+      .mobile-title {
+        display: inline;
+      }
+
+      .hero__subtitle {
+        margin-top: 16px;
+        max-width: 340px;
+        margin-inline: auto;
+        font-size: .92rem;
+        line-height: 1.55;
+      }
+
+      .hero__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 22px;
+        width: 100%;
+        max-width: 340px;
+        margin-inline: auto;
+      }
+
+      .button {
+        width: 100%;
+        min-height: 52px;
+        padding: 0 18px;
+        white-space: normal;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 22px;
+        width: 100%;
+        max-width: 340px;
+        margin-inline: auto;
+      }
+
+      .feature {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 13px 14px;
+      }
+
+      .feature svg {
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        flex: 0 0 auto;
+      }
+
+      .feature span {
+        text-align: left;
+        font-size: .74rem;
+      }
+
+      .about {
+        background-position: 72% center;
+      }
+
+      .about::before {
+        background:
+          linear-gradient(180deg,
+            rgba(255, 249, 252, .94) 0%,
+            rgba(255, 246, 250, .94) 34%,
+            rgba(255, 245, 250, .9) 66%,
+            rgba(255, 249, 252, .98) 100%),
+          linear-gradient(90deg,
+            rgba(255, 255, 255, .96),
+            rgba(251, 228, 239, .58));
+      }
+
+      .about__inner {
+        align-items: start;
+        width: min(100% - 34px, 540px);
+        padding: 20px 0 34px;
+      }
+
+      .about__content {
+        max-width: 340px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about__logo {
+        width: min(164px, 50vw);
+        margin-inline: auto;
+        margin-bottom: 14px;
+      }
+
+      .about__title {
+        max-width: 340px;
+        margin-inline: auto;
+        font-size: clamp(2.08rem, 9vw, 2.72rem);
+        line-height: .92;
+      }
+
+      .about__title strong {
+        line-height: .88;
+      }
+
+      .about__script {
+        margin-top: 8px;
+        font-size: clamp(1.42rem, 6.3vw, 1.88rem);
+      }
+
+      .about__swoosh {
+        margin: 6px auto 16px;
+        width: 190px;
+      }
+
+      .about__facts {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 340px;
+        margin-inline: auto;
+      }
+
+      .about__fact {
+        grid-template-columns: 50px 1fr;
+        gap: 12px;
+        text-align: left;
+        font-size: .94rem;
+        padding: 10px 12px;
+      }
+
+      .about__icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .about__icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .about__card {
+        grid-template-columns: 46px 1fr;
+        gap: 12px;
+        max-width: 340px;
+        margin: 14px auto 0;
+        padding: 16px 18px;
+        text-align: left;
+        font-size: .92rem;
+      }
+
+      .about__card svg {
+        width: 38px;
+        height: 38px;
+      }
+
+      .about__story {
+        padding: 18px;
+        text-align: left;
+      }
+
+      .about__story h3 {
+        text-align: center;
+        font-size: 1.9rem;
+      }
+
+      .about__story p {
+        font-size: .9rem;
+        line-height: 1.52;
+      }
+
+      .process {
+        background-position: 78% center;
+      }
+
+      .process::before {
+        background:
+          linear-gradient(180deg,
+            rgba(255, 249, 252, .9) 0%,
+            rgba(255, 247, 251, .86) 58%,
+            rgba(255, 244, 250, .92) 100%),
+          linear-gradient(90deg,
+            rgba(255, 250, 253, .92) 0%,
+            rgba(255, 247, 251, .76) 58%,
+            rgba(255, 239, 247, .34) 100%);
+      }
+
+      .process__inner {
+        width: min(100% - 34px, 540px);
+        padding: 34px 0 38px;
+        align-content: start;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2.55rem, 12vw, 3.6rem);
+      }
+
+      .section-heading p {
+        max-width: 310px;
+        font-size: .98rem;
+      }
+
+      .process__divider {
+        margin: 14px auto 22px;
+        width: 210px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 66px 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 14px;
+        border: 1px solid rgba(219, 98, 152, .14);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .62);
+        box-shadow: 0 16px 32px rgba(148, 128, 198, .1);
+        text-align: left;
+        backdrop-filter: blur(12px);
+      }
+
+      .step__icon {
+        grid-row: span 2;
+        width: 60px;
+        height: 60px;
+        margin: 0;
+      }
+
+      .step__icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .step__number {
+        top: 8px;
+        left: 8px;
+        width: 26px;
+        height: 26px;
+        font-size: .78rem;
+      }
+
+      .step h3 {
+        font-size: .95rem;
+      }
+
+      .step p {
+        margin-top: 4px;
+        font-size: .86rem;
+        line-height: 1.42;
+      }
+
+      .process__assurance {
+        grid-template-columns: 1fr;
+        margin-top: 18px;
+      }
+
+      .assurance {
+        min-height: 82px;
+        grid-template-columns: 42px 1fr;
+        place-items: center start;
+        padding: 14px 18px;
+        text-align: left;
+        font-size: .88rem;
+      }
+
+      .assurance + .assurance {
+        border-left: 0;
+        border-top: 1px solid rgba(148, 128, 198, .14);
+      }
+
+      .assurance svg {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero__inner {
+        width: min(100% - 24px, 540px);
+      }
+
+      h1 {
+        font-size: clamp(1.78rem, 7.6vw, 2.08rem);
+      }
+    }
+
+    .events {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: url("assets/imagem2.png.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .events::before,
+    .events::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .events::before {
+      background:
+        radial-gradient(ellipse at 48% 48%, rgba(255, 252, 254, .5), rgba(255, 247, 251, .2) 48%, rgba(255, 238, 247, .02) 78%),
+        linear-gradient(90deg, rgba(255, 247, 251, .34), rgba(255, 255, 255, .08) 46%, rgba(255, 239, 247, .18));
+    }
+
+    .events::after {
+      background:
+        radial-gradient(circle at 25% 12%, rgba(255, 255, 255, .84) 0 .7%, transparent 1.1%),
+        radial-gradient(circle at 74% 9%, rgba(255, 255, 255, .86) 0 .55%, transparent .9%),
+        radial-gradient(circle at 79% 28%, rgba(255, 255, 255, .76) 0 .45%, transparent .8%);
+      mix-blend-mode: screen;
+    }
+
+    .events__inner {
+      width: min(1280px, calc(100% - 48px));
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: clamp(34px, 4vw, 54px) 0 30px;
+      display: grid;
+      align-content: center;
+      gap: 20px;
+    }
+
+    .events__grid {
+      position: relative;
+      height: clamp(560px, 68vh, 660px);
+    }
+
+    .events__intro {
+      position: absolute;
+      left: 1.6%;
+      top: .2%;
+      width: 34%;
+      height: 39%;
+      padding: 8px 10px;
+      min-width: 0;
+      z-index: 2;
+    }
+
+    .events__kicker {
+      width: 210px;
+      max-width: 72%;
+      height: 26px;
+      margin: 0 auto 14px;
+      color: var(--pink-300);
+    }
+
+    .events__intro h2 {
+      margin: 0;
+      color: var(--pink-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 2.92vw, 2.92rem);
+      font-weight: 800;
+      line-height: .98;
+      letter-spacing: 0;
+      text-shadow: 0 3px 0 rgba(255, 255, 255, .6);
+      text-wrap: balance;
+      overflow-wrap: normal;
+    }
+
+    .events__intro p {
+      max-width: 330px;
+      margin: 12px 0 0 20px;
+      color: #8f70b1;
+      font-size: clamp(.8rem, .88vw, .92rem);
+      font-weight: 650;
+      line-height: 1.34;
+    }
+
+    .events__swoosh {
+      width: 140px;
+      height: 24px;
+      margin: 8px 0 0 112px;
+      color: var(--pink-300);
+    }
+
+    .event-card {
+      position: relative;
+      min-height: 0;
+      overflow: hidden;
+      border: 1px dashed rgba(219, 98, 152, .45);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .34);
+      box-shadow: 0 20px 46px rgba(148, 128, 198, .14);
+      backdrop-filter: blur(8px);
+    }
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 7px rgba(255, 255, 255, .42);
+      pointer-events: none;
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: var(--pos, center);
+      transform: scale(1.01);
+      transition: transform .45s ease, filter .45s ease;
+    }
+
+    .event-card:hover img {
+      transform: scale(1.075);
+      filter: saturate(1.04) brightness(1.03);
+    }
+
+    .event-card--wide {
+      position: absolute;
+      left: 43.2%;
+      top: 2%;
+      width: 36.2%;
+      height: 36%;
+    }
+
+    .event-card--top {
+      position: absolute;
+      left: 80.8%;
+      top: 2%;
+      width: 19.2%;
+      height: 36%;
+    }
+
+    .event-card--left {
+      position: absolute;
+      left: 3.8%;
+      top: 53%;
+      width: 23.2%;
+      height: 30%;
+    }
+
+    .event-card--middle-a {
+      position: absolute;
+      left: 31.6%;
+      top: 45%;
+      width: 22%;
+      height: 23.5%;
+    }
+
+    .event-card--middle-b {
+      position: absolute;
+      left: 55%;
+      top: 45%;
+      width: 24.8%;
+      height: 23.5%;
+    }
+
+    .event-card--right {
+      position: absolute;
+      left: 81%;
+      top: 46%;
+      width: 17.8%;
+      height: 37%;
+    }
+
+    .event-card--bottom-a {
+      position: absolute;
+      left: 31.6%;
+      top: 71.5%;
+      width: 22.2%;
+      height: 11.5%;
+    }
+
+    .event-card--bottom-b {
+      position: absolute;
+      left: 55.5%;
+      top: 71.5%;
+      width: 24.4%;
+      height: 11.5%;
+    }
+
+    .events__cta {
+      width: fit-content;
+      min-width: min(390px, 100%);
+      min-height: 66px;
+      margin: -6px auto 0;
+      padding: 0 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #cf4f8d, #ec96bd 52%, #c54d86);
+      box-shadow: 0 24px 54px rgba(183, 92, 136, .26);
+      text-decoration: none;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      font-weight: 800;
+    }
+
+    .events__cta svg {
+      width: 30px;
+      height: 30px;
+      stroke-width: 1.7;
+    }
+
+    .events__instagram {
+      width: fit-content;
+      margin: -8px auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #9a6ab0;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 700;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .events__instagram:hover {
+      color: var(--pink-500);
+      transform: translateY(-1px);
+    }
+
+    .instagram-icon {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      stroke-width: 1.8;
+    }
+
+    @media (max-width: 980px) {
+      .events__grid {
+        position: static;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: auto repeat(8, 92px);
+      }
+
+      .events__intro {
+        position: static;
+        width: auto;
+        height: auto;
+        grid-column: 1 / -1;
+        grid-row: 1;
+        text-align: center;
+      }
+
+      .events__intro p,
+      .events__swoosh {
+        margin-inline: auto;
+      }
+
+      .event-card--wide {
+        position: relative;
+        grid-column: 1 / 5;
+        grid-row: 2 / 4;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--top {
+        position: relative;
+        grid-column: 5 / 7;
+        grid-row: 2 / 4;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--left {
+        position: relative;
+        grid-column: 1 / 3;
+        grid-row: 4 / 7;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--middle-a {
+        position: relative;
+        grid-column: 3 / 5;
+        grid-row: 4 / 6;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--middle-b {
+        position: relative;
+        grid-column: 5 / 7;
+        grid-row: 4 / 6;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--right {
+        position: relative;
+        grid-column: 5 / 7;
+        grid-row: 6 / 9;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--bottom-a {
+        position: relative;
+        grid-column: 1 / 3;
+        grid-row: 7 / 9;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+      .event-card--bottom-b {
+        position: relative;
+        grid-column: 3 / 5;
+        grid-row: 6 / 9;
+        width: auto;
+        height: auto;
+        left: auto;
+        top: auto;
+      }
+
+    }
+
+    @media (max-width: 700px) {
+      .events {
+        background-position: center;
+      }
+
+      .events::before {
+        background:
+          linear-gradient(180deg, rgba(255, 249, 252, .88), rgba(255, 244, 250, .72)),
+          radial-gradient(ellipse at 50% 28%, rgba(255, 255, 255, .72), transparent 62%);
+      }
+
+      .events__inner {
+        width: min(100% - 34px, 540px);
+        padding: 34px 0 38px;
+      }
+
+      .events__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+      }
+
+      .events__intro,
+      .event-card--wide,
+      .event-card--top,
+      .event-card--left,
+      .event-card--middle-a,
+      .event-card--middle-b,
+      .event-card--right,
+      .event-card--bottom-a,
+      .event-card--bottom-b {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+
+      .events__intro {
+        grid-column: 1 / -1;
+        padding: 0 4px 8px;
+      }
+
+      .events__intro h2 {
+        font-size: clamp(2.42rem, 11vw, 3.25rem);
+      }
+
+      .events__intro p {
+        margin-top: 14px;
+        font-size: .95rem;
+      }
+
+      .events__kicker {
+        margin-bottom: 12px;
+      }
+
+      .events__swoosh {
+        margin-top: 10px;
+      }
+
+      .event-card {
+        min-height: 245px;
+        border-radius: 16px;
+      }
+
+      .event-card--wide,
+      .event-card--right {
+        min-height: 270px;
+      }
+
+      .events__cta {
+        width: 100%;
+        min-width: 0;
+        min-height: 58px;
+        padding: 0 22px;
+        font-size: 1.32rem;
+      }
+
+      .events__instagram {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+
+    .contact {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: url("orÃ§amentolimpo.png.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .contact::before,
+    .contact::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .contact::before {
+      background:
+        radial-gradient(ellipse at 58% 45%, rgba(255, 252, 254, .64), rgba(255, 247, 251, .24) 58%, rgba(255, 238, 247, .02) 100%),
+        linear-gradient(90deg, rgba(255, 247, 251, .18), rgba(255, 255, 255, .08) 46%, rgba(255, 239, 247, .18));
+    }
+
+    .contact::after {
+      background:
+        radial-gradient(circle at 54% 15%, rgba(255, 255, 255, .85) 0 .5%, transparent .9%),
+        radial-gradient(circle at 92% 16%, rgba(255, 255, 255, .78) 0 .6%, transparent 1%),
+        radial-gradient(circle at 25% 58%, rgba(255, 255, 255, .72) 0 .45%, transparent .85%);
+      mix-blend-mode: screen;
+    }
+
+    .contact__inner {
+      width: min(1180px, calc(100% - 48px));
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(360px, 520px);
+      gap: clamp(36px, 5vw, 72px);
+      align-items: center;
+      padding: clamp(42px, 5vw, 68px) 0;
+    }
+
+    .contact__title {
+      margin: 0;
+      color: var(--pink-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(3.1rem, 5.2vw, 5.25rem);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: 0;
+      text-shadow: 0 3px 0 rgba(255, 255, 255, .6);
+      text-wrap: balance;
+    }
+
+    .contact__subtitle {
+      margin: 14px 0 0;
+      color: #8f70b1;
+      font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+      font-weight: 700;
+    }
+
+    .contact__divider {
+      width: min(330px, 72%);
+      height: 28px;
+      margin: 18px 0 28px 90px;
+      color: var(--pink-300);
+    }
+
+    .contact__steps {
+      display: grid;
+      gap: 24px;
+      max-width: 610px;
+      margin-left: min(8vw, 120px);
+    }
+
+    .contact-step {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .contact-step__icon {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #e26ca4, #f3a6c8);
+      border: 4px solid rgba(255, 255, 255, .64);
+      box-shadow: 0 16px 34px rgba(219, 98, 152, .2);
+    }
+
+    .contact-step:nth-child(even) .contact-step__icon {
+      background: linear-gradient(135deg, #a87bc8, #d4b3e5);
+    }
+
+    .contact-step__icon svg {
+      width: 38px;
+      height: 38px;
+      stroke-width: 1.65;
+    }
+
+    .contact-step__icon img,
+    .whatsapp-card__badge img,
+    .whatsapp-card__button img,
+    .floating-whatsapp img {
+      display: block;
+      width: 58%;
+      height: 58%;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .contact-step h3 {
+      margin: 0;
+      color: var(--pink-500);
+      font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .contact-step:nth-child(even) h3 {
+      color: #8c63aa;
+    }
+
+    .contact-step p {
+      margin: 8px 0 0;
+      color: #2f2934;
+      font-size: clamp(.94rem, 1.1vw, 1.04rem);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .whatsapp-card {
+      position: relative;
+      align-self: center;
+      padding: 80px 46px 44px;
+      border: 1px solid rgba(219, 98, 152, .22);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, .48);
+      box-shadow: 0 24px 58px rgba(148, 128, 198, .14);
+      text-align: center;
+      backdrop-filter: blur(12px);
+    }
+
+    .whatsapp-card__badge {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 132px;
+      height: 132px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #df6ea3, #f2abc9);
+      border: 5px solid rgba(255, 255, 255, .42);
+      box-shadow: 0 18px 40px rgba(219, 98, 152, .24);
+    }
+
+    .whatsapp-card__badge svg {
+      width: 70px;
+      height: 70px;
+      stroke-width: 1.65;
+    }
+
+    .whatsapp-card h3 {
+      margin: 0;
+      color: var(--pink-500);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.05;
+    }
+
+    .whatsapp-card p {
+      margin: 12px auto 0;
+      max-width: 330px;
+      color: #8f63a7;
+      font-size: clamp(1rem, 1.35vw, 1.22rem);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .whatsapp-card__divider {
+      width: min(370px, 100%);
+      height: 28px;
+      margin: 28px auto 28px;
+      color: var(--pink-300);
+    }
+
+    .whatsapp-card__button {
+      min-height: 64px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 0 32px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, #db6298, #ef9bc2);
+      box-shadow: 0 20px 46px rgba(183, 92, 136, .26);
+      text-decoration: none;
+      font-size: clamp(1.1rem, 2vw, 1.65rem);
+      font-weight: 800;
+      white-space: nowrap;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .whatsapp-card__button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 56px rgba(183, 92, 136, .32);
+    }
+
+    .whatsapp-card__button svg {
+      width: 34px;
+      height: 34px;
+      stroke-width: 1.8;
+    }
+
+    .whatsapp-card__button img {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+    }
+
+    .whatsapp-card__social {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #8f63a7;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 700;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .whatsapp-card__social:hover {
+      color: var(--pink-500);
+      transform: translateY(-1px);
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 50;
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #db6298, #ef9bc2);
+      border: 3px solid rgba(255, 255, 255, .72);
+      box-shadow: 0 18px 42px rgba(183, 92, 136, .34);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 24px 54px rgba(183, 92, 136, .42);
+    }
+
+    .contact__trust {
+      grid-column: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: -34px;
+      border: 1px solid rgba(219, 98, 152, .18);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .5);
+      box-shadow: 0 20px 46px rgba(148, 128, 198, .12);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .trust-item {
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      gap: 8px;
+      padding: 18px;
+      color: #7d5d9e;
+      text-align: center;
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .trust-item + .trust-item {
+      border-left: 1px solid rgba(219, 98, 152, .16);
+    }
+
+    .trust-item svg {
+      width: 40px;
+      height: 40px;
+      stroke-width: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      .contact__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .contact__copy {
+        max-width: 660px;
+      }
+
+      .contact__steps {
+        margin-left: 0;
+      }
+
+      .contact__trust {
+        grid-column: auto;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .contact {
+        background-position: 23% center;
+      }
+
+      .contact::before {
+        background: linear-gradient(180deg, rgba(255, 249, 252, .9), rgba(255, 244, 250, .82));
+      }
+
+      .contact__inner {
+        width: min(100% - 34px, 540px);
+        padding: 36px 0 38px;
+      }
+
+      .contact__copy {
+        text-align: center;
+      }
+
+      .contact__title {
+        font-size: clamp(2.45rem, 11vw, 3.45rem);
+      }
+
+      .contact__subtitle {
+        font-size: 1rem;
+      }
+
+      .contact__divider {
+        margin: 14px auto 22px;
+      }
+
+      .contact__steps {
+        gap: 12px;
+      }
+
+      .contact-step {
+        grid-template-columns: 54px 1fr;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid rgba(219, 98, 152, .13);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, .52);
+        text-align: left;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-step__icon {
+        width: 54px;
+        height: 54px;
+        border-width: 3px;
+      }
+
+      .contact-step__icon svg {
+        width: 29px;
+        height: 29px;
+      }
+
+      .contact-step__icon img {
+        width: 29px;
+        height: 29px;
+      }
+
+      .contact-step h3 {
+        font-size: .98rem;
+      }
+
+      .contact-step p {
+        font-size: .86rem;
+      }
+
+      .whatsapp-card {
+        margin-top: 44px;
+        padding: 64px 20px 28px;
+      }
+
+      .whatsapp-card__badge {
+        width: 104px;
+        height: 104px;
+      }
+
+      .whatsapp-card__badge svg {
+        width: 54px;
+        height: 54px;
+      }
+
+      .whatsapp-card__badge img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .whatsapp-card h3 {
+        font-size: 2rem;
+      }
+
+      .whatsapp-card p {
+        font-size: .96rem;
+      }
+
+      .whatsapp-card__button {
+        width: 100%;
+        min-height: 58px;
+        padding: 0 18px;
+        font-size: 1.05rem;
+      }
+
+      .floating-whatsapp {
+        right: 16px;
+        bottom: 16px;
+        width: 58px;
+        height: 58px;
+      }
+
+      .contact__trust {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        min-height: 78px;
+        grid-template-columns: 42px 1fr;
+        place-items: center start;
+        text-align: left;
+      }
+
+      .trust-item + .trust-item {
+        border-left: 0;
+        border-top: 1px solid rgba(219, 98, 152, .16);
+      }
+    }
+
+    .site-footer {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      height: 85px;
+      min-height: 85px;
+      background:
+        linear-gradient(90deg, rgba(255, 248, 252, .98), rgba(251, 229, 241, .96) 52%, rgba(240, 231, 255, .92)),
+        linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 230, 241, .6));
+      color: #b84f84;
+      border-top: 1px solid rgba(219, 98, 152, .16);
+      box-shadow: 0 -14px 36px rgba(206, 117, 164, .12);
+    }
+
+    .site-footer::before,
+    .site-footer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .site-footer::before {
+      background:
+        radial-gradient(circle at 18% 26%, rgba(255, 255, 255, .9) 0 .35%, transparent .7%),
+        radial-gradient(circle at 72% 30%, rgba(255, 255, 255, .76) 0 .32%, transparent .7%),
+        radial-gradient(circle at 88% 70%, rgba(255, 255, 255, .65) 0 .28%, transparent .65%);
+      opacity: .8;
+    }
+
+    .site-footer::after {
+      display: none;
+    }
+
+    .footer__inner {
+      width: min(1180px, calc(100% - 48px));
+      height: 85px;
+      min-height: 85px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0;
+    }
+
+    .footer__logo {
+      width: auto;
+      max-width: 96px;
+      max-height: 54px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 14px rgba(219, 98, 152, .18));
+    }
+
+    .footer__links {
+      width: auto;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 2.2vw, 30px);
+      border: 0;
+      background: transparent;
+      backdrop-filter: none;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .footer__item {
+      min-height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0;
+      color: #9a6fb6;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: .94;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .footer__item:hover {
+      color: var(--pink-500);
+      opacity: 1;
+    }
+
+    .footer__item + .footer__item {
+      border-left: 0;
+    }
+
+    .footer__icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #db6298;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(219, 98, 152, .2);
+      box-shadow: 0 8px 18px rgba(219, 98, 152, .12);
+      flex: 0 0 auto;
+    }
+
+    .footer__icon svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.8;
+    }
+
+    .footer__icon img {
+      width: 17px;
+      height: 17px;
+      filter: brightness(0) saturate(100%) invert(53%) sepia(48%) saturate(1047%) hue-rotate(292deg) brightness(91%) contrast(88%);
+    }
+
+    .footer__copyright {
+      justify-content: flex-start;
+      color: #9a6fb6;
+      font-size: .74rem;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: .86;
+    }
+
+    @media (max-width: 820px) {
+      .site-footer {
+        height: auto;
+        min-height: 150px;
+        overflow: visible;
+        padding: 18px 0 76px;
+      }
+
+      .footer__inner {
+        width: min(100% - 36px, 520px);
+        height: auto;
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        align-items: center;
+        gap: 12px 16px;
+        padding: 0;
+      }
+
+      .footer__logo {
+        width: auto;
+        max-width: 64px;
+        max-height: 58px;
+        justify-self: start;
+      }
+
+      .footer__links {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 8px 14px;
+        margin-top: 0;
+      }
+
+      .footer__inner > .footer__links:first-of-type {
+        grid-column: 2;
+      }
+
+      .footer__inner > .footer__links:last-of-type {
+        grid-column: 1 / -1;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(219, 98, 152, .14);
+      }
+
+      .footer__item {
+        justify-content: center;
+        min-height: auto;
+        gap: 7px;
+        font-size: .76rem;
+      }
+
+      .footer__item + .footer__item {
+        border-left: 0;
+        border-top: 0;
+      }
+
+      .footer__icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .footer__copyright span:last-child {
+        display: none;
+      }
+
+      .floating-whatsapp {
+        bottom: 92px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-label="Party Kabanas festas do pijama infantis">
+    <div class="hero__shine" aria-hidden="true"></div>
+    <section class="hero__inner">
+      <div class="hero__content">
+        <a class="brand" href="#" aria-label="Party Kabanas">
+          <img class="brand__logo" src="assets/logo-harmonizada.png" alt="Party Kabanas">
+        </a>
+
+        <p class="eyebrow">Festas do pijama infantis</p>
+        <h1><span class="desktop-title">Festas do pijama mÃ¡gicas, seguras e inesquecÃ­veis</span><span class="mobile-title">Festas do pijama<br>mÃ¡gicas, seguras<br>e inesquecÃ­veis</span></h1>
+        <p class="hero__subtitle">Transformamos momentos especiais em experiÃªncias encantadoras, com cabaninhas personalizadas, decoraÃ§Ã£o delicada e todo o cuidado que as crianÃ§as merecem.</p>
+
+        <div class="hero__actions" aria-label="Acoes principais">
+          <a class="button button--primary" href="#planejar">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+            Quero planejar minha festa
+          </a>
+          <a class="button button--secondary" href="#experiencias">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Ver experiÃªncias
+          </a>
+        </div>
+
+        <div class="features" aria-label="Diferenciais Party Kabanas">
+          <div class="feature">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m3 20 8.5-16L20 20H3Z"></path>
+              <path d="M12 20v-7"></path>
+              <path d="m9.5 10.5 2-2 2 2"></path>
+            </svg>
+            <span>Ambiente encantador</span>
+          </div>
+          <div class="feature">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"></path>
+            </svg>
+            <span>ExperiÃªncias personalizadas</span>
+          </div>
+          <div class="feature">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 3 20 7v5c0 5-3.4 8.5-8 9-4.6-.5-8-4-8-9V7l8-4Z"></path>
+              <path d="m9 12 2 2 4-5"></path>
+            </svg>
+            <span>SeguranÃ§a e tranquilidade</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="about" id="sobre" aria-label="Sobre a Party Kabanas">
+    <div class="about__inner">
+      <div class="about__content">
+        <h2 class="about__title">
+          HÃ¡ mais de
+          <strong>15 anos</strong>
+          <span class="about__script">criando memÃ³rias...</span>
+        </h2>
+
+        <svg class="about__swoosh" aria-hidden="true" viewBox="0 0 260 30" fill="none">
+          <path d="M12 16c40-18 72 14 116 0 38-12 66-11 118 2" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M24 15c0 6-7 10-10 10S4 21 4 15 14 4 14 4s10 5 10 11Z" fill="currentColor" opacity=".9"></path>
+        </svg>
+
+        <div class="about__story">
+          <h3>Quem somos?</h3>
+          <p>Desde 2015, nasceu no coraÃ§Ã£o da minha primogÃªnita o desejo de ter uma festa do pijama. Com isso, esse sonho se tornou realidade e, logo apÃ³s, nasceu a Party Kabanas.</p>
+          <p>Com mais de 2.000 sonhos e festas realizadas, fomos pioneiras em festa do pijama no CearÃ¡, criando noites especiais para crianÃ§as viverem momentos inesquecÃ­veis com seus melhores amigos.</p>
+          <p>Trabalhamos com cenÃ¡rios encantadores, cabanas e tendas diferenciadas, em diversas cores e temas personalizados, alÃ©m de lembrancinhas exclusivas desenvolvidas de acordo com cada ocasiÃ£o.</p>
+        </div>
+
+        <div class="about__facts">
+          <div class="about__fact">
+            <span class="about__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path>
+              </svg>
+            </span>
+            <span>Especialistas em festas do pijama infantis</span>
+          </div>
+
+          <div class="about__fact">
+            <span class="about__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M20 10c0 5.2-8 11-8 11s-8-5.8-8-11a8 8 0 1 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <span>Atendimento em <strong>Fortaleza/CE</strong></span>
+          </div>
+        </div>
+
+        <div class="about__card">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"></path>
+          </svg>
+          <p>Cada detalhe Ã© pensado para encantar as crianÃ§as e tranquilizar os pais.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="como-funciona" aria-label="Como funciona a Party Kabanas">
+    <div class="process__inner">
+      <div class="section-heading">
+        <h2>Como funciona</h2>
+        <p>A gente cuida de tudo para que seja inesquecÃ­vel!</p>
+        <svg class="process__divider" aria-hidden="true" viewBox="0 0 290 30" fill="none">
+          <path d="M20 15h90" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+          <path d="M180 15h90" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+          <path d="M154 8.5a8 8 0 0 0-11 0l-2 2-2-2a8 8 0 1 0-11 11L141 27l13-7.5a8 8 0 0 0 0-11Z" stroke="currentColor" stroke-width="2" fill="none"></path>
+        </svg>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"></path>
+            </svg>
+          </span>
+          <span class="step__number">1</span>
+          <h3>OrÃ§amento via WhatsApp</h3>
+          <p>VocÃª nos conta sua ideia e recebe um orÃ§amento personalizado.</p>
+        </article>
+
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 5h6"></path>
+              <path d="M9 3h6v4H9z"></path>
+              <path d="M6 5H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1"></path>
+              <path d="m8 13 2 2 4-5"></path>
+              <path d="M8 18h8"></path>
+            </svg>
+          </span>
+          <span class="step__number">2</span>
+          <h3>VocÃª escolhe o tema da festa</h3>
+          <p>Escolha o tema, a data e os detalhes que vÃ£o tornar tudo Ãºnico e especial.</p>
+        </article>
+
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+              <path d="M14 2v6h6"></path>
+              <path d="M8 13h5"></path>
+              <path d="M8 17h8"></path>
+              <circle cx="17" cy="17" r="4"></circle>
+              <path d="M17 14.8v4.4"></path>
+              <path d="M15.8 16h1.8a1.1 1.1 0 0 1 0 2.2h-1.4"></path>
+            </svg>
+          </span>
+          <span class="step__number">3</span>
+          <h3>ConfirmaÃ§Ã£o</h3>
+          <p>A confirmaÃ§Ã£o Ã© feita apÃ³s o envio do comprovante de 50% do valor combinado.</p>
+        </article>
+
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m3 20 8.5-16L20 20H3Z"></path>
+              <path d="M12 20v-7"></path>
+              <path d="m9.5 10.5 2-2 2 2"></path>
+            </svg>
+          </span>
+          <span class="step__number">4</span>
+          <h3>A equipe monta tudo no local</h3>
+          <p>Nossa equipe leva, monta e deixa tudo lindo e perfeito para a festa acontecer.</p>
+        </article>
+
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M7 21s-4-3.2-4-8a4 4 0 0 1 8 0c0 4.8-4 8-4 8Z"></path>
+              <path d="M17 21s-4-3.2-4-8a4 4 0 0 1 8 0c0 4.8-4 8-4 8Z"></path>
+              <path d="M7 17h10"></path>
+            </svg>
+          </span>
+          <span class="step__number">5</span>
+          <h3>As crianÃ§as aproveitam a experiÃªncia</h3>
+          <p>DiversÃ£o, conforto e momentos mÃ¡gicos que ficam para sempre na memÃ³ria.</p>
+        </article>
+
+        <article class="step">
+          <span class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"></path>
+              <path d="m17 4 .6 1.6L19 6l-1.4.4L17 8l-.6-1.6L15 6l1.4-.4L17 4Z"></path>
+              <path d="m20 8 .4 1 .9.3-.9.3-.4 1-.4-1-.9-.3.9-.3.4-1Z"></path>
+            </svg>
+          </span>
+          <span class="step__number">6</span>
+          <h3>No final, a equipe desmonta com cuidado</h3>
+          <p>Cuidamos de tudo atÃ© o Ãºltimo detalhe para vocÃª nÃ£o se preocupar com nada.</p>
+        </article>
+      </div>
+
+      <div class="process__assurance" aria-label="Garantias da experiÃªncia">
+        <div class="assurance">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3 20 7v5c0 5-3.4 8.5-8 9-4.6-.5-8-4-8-9V7l8-4Z"></path>
+            <path d="m9 12 2 2 4-5"></path>
+          </svg>
+          <span>SeguranÃ§a em primeiro lugar</span>
+        </div>
+        <div class="assurance">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"></path>
+          </svg>
+          <span>DecoraÃ§Ã£o encantadora</span>
+        </div>
+        <div class="assurance">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"></path>
+          </svg>
+          <span>ExperiÃªncia completa e sem preocupaÃ§Ãµes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="events" id="festas-realizadas" aria-label="Festas realizadas pela Party Kabanas">
+    <div class="events__inner">
+      <div class="events__grid">
+        <div class="events__intro">
+          <svg class="events__kicker" aria-hidden="true" viewBox="0 0 250 28" fill="none">
+            <path d="M16 14h86" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+            <path d="M148 14h86" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+            <path d="M133 8.5a7 7 0 0 0-9.8 0L122 9.7l-1.2-1.2a7 7 0 1 0-9.8 9.8L122 25l11-6.7a7 7 0 0 0 0-9.8Z" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+          <h2>Festas reais que jÃ¡ encantaram famÃ­lias</h2>
+          <p>Veja algumas experiÃªncias jÃ¡ criadas pela Party Kabanas, com temas personalizados, decoraÃ§Ã£o delicada e todo o cuidado que cada momento merece.</p>
+          <svg class="events__swoosh" aria-hidden="true" viewBox="0 0 190 28" fill="none">
+            <path d="M8 15c28-16 48 12 82 0 28-10 48-8 92 2" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
+            <path d="M96 8a7 7 0 0 0-9.8 0L85 9.2 83.8 8A7 7 0 1 0 74 17.8L85 25l11-7.2A7 7 0 0 0 96 8Z" fill="currentColor" opacity=".86"></path>
+          </svg>
+        </div>
+
+        <figure class="event-card event-card--wide">
+          <img src="assets/1200x700.png.png" alt="Festa do pijama com cabanas e esteiras pink em salÃ£o amplo">
+        </figure>
+        <figure class="event-card event-card--top">
+          <img src="assets/1000x970.png.png" alt="Cabaninhas brancas com brinquedos e iluminaÃ§Ã£o lilÃ¡s">
+        </figure>
+        <figure class="event-card event-card--left">
+          <img src="assets/900x940.png" alt="Cabaninha iluminada com decoraÃ§Ã£o colorida e bandejas personalizadas">
+        </figure>
+        <figure class="event-card event-card--middle-a">
+          <img src="assets/1100x800.png.png" alt="Cabanas lilÃ¡s em corredor com decoraÃ§Ã£o de balÃµes ao fundo">
+        </figure>
+        <figure class="event-card event-card--middle-b">
+          <img src="assets/1200x720.png" alt="Cabanas brancas com balÃµes rosados e luzes aconchegantes">
+        </figure>
+        <figure class="event-card event-card--right">
+          <img src="assets/900x1200.png.png" alt="Cabanas temÃ¡ticas pretas com decoraÃ§Ã£o Jurassic Park">
+        </figure>
+        <figure class="event-card event-card--bottom-a">
+          <img src="assets/1300x500.png" alt="Festa do pijama colorida com tendas, almofadas e lembrancinhas">
+        </figure>
+        <figure class="event-card event-card--bottom-b">
+          <img src="assets/1400x500.png" alt="Festa temÃ¡tica colorida com almofadas e balÃµes em salÃ£o iluminado">
+        </figure>
+      </div>
+
+      <a class="events__cta" href="#planejar">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"></path>
+        </svg>
+        Quero uma festa assim
+      </a>
+      <a class="events__instagram" href="https://www.instagram.com/partykabanas" target="_blank" rel="noopener">
+        <svg class="instagram-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M17.5 6.5h.01"></path>
+        </svg>
+        Veja mais inspiraÃ§Ãµes no Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="contact" id="orcamento" aria-label="Contato e orÃ§amento Party Kabanas">
+    <div class="contact__inner">
+      <div class="contact__copy">
+        <h2 class="contact__title">Fale conosco e peÃ§a seu orÃ§amento</h2>
+        <p class="contact__subtitle">Ã‰ rÃ¡pido, fÃ¡cil e personalizado!</p>
+        <svg class="contact__divider" aria-hidden="true" viewBox="0 0 330 30" fill="none">
+          <path d="M18 15h126" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+          <path d="M186 15h126" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+          <path d="M174 8.5a7.5 7.5 0 0 0-10.6 0L162 9.9l-1.4-1.4a7.5 7.5 0 1 0-10.6 10.6l12 7.9 12-7.9a7.5 7.5 0 0 0 0-10.6Z" fill="currentColor" opacity=".88"></path>
+        </svg>
+
+        <div class="contact__steps">
+          <div class="contact-step">
+            <span class="contact-step__icon" aria-hidden="true">
+              <img src="assets/whatsapp.svg" alt="">
+            </span>
+            <div>
+              <h3>OrÃ§amento via WhatsApp</h3>
+              <p>Fale com a gente e conte sua ideia!</p>
+            </div>
+          </div>
+
+          <div class="contact-step">
+            <span class="contact-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M9 5h6"></path>
+                <path d="M9 3h6v4H9z"></path>
+                <path d="M6 5H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1"></path>
+                <path d="m8 13 2 2 4-5"></path>
+                <path d="M8 18h8"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Receba seu orÃ§amento</h3>
+              <p>Montamos uma proposta personalizada para o que vocÃª sonhou.</p>
+            </div>
+          </div>
+
+          <div class="contact-step">
+            <span class="contact-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                <path d="M14 2v6h6"></path>
+                <path d="M8 13h5"></path>
+                <circle cx="17" cy="17" r="4"></circle>
+                <path d="M17 14.8v4.4"></path>
+                <path d="M15.8 16h1.8a1.1 1.1 0 0 1 0 2.2h-1.4"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>ConfirmaÃ§Ã£o fÃ¡cil</h3>
+              <p>Sua reserva Ã© confirmada apÃ³s o envio do comprovante de pagamento de 50% do valor combinado.</p>
+            </div>
+          </div>
+
+          <div class="contact-step">
+            <span class="contact-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"></path>
+              </svg>
+            </span>
+            <div>
+              <h3>Atendimento humanizado</h3>
+              <p>Estamos aqui para cuidar de cada detalhe e tirar todas as suas dÃºvidas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="whatsapp-card">
+          <span class="whatsapp-card__badge" aria-hidden="true">
+            <img src="assets/whatsapp.svg" alt="">
+          </span>
+          <h3>Chame no WhatsApp</h3>
+          <p>e comece a planejar uma experiÃªncia inesquecÃ­vel!</p>
+          <svg class="whatsapp-card__divider" aria-hidden="true" viewBox="0 0 370 30" fill="none">
+            <path d="M24 15h118" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+            <path d="M228 15h118" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+            <path d="M196 8.5a7.5 7.5 0 0 0-10.6 0L184 9.9l-1.4-1.4a7.5 7.5 0 1 0-10.6 10.6l12 7.9 12-7.9a7.5 7.5 0 0 0 0-10.6Z" fill="currentColor" opacity=".88"></path>
+            <path d="m13 12 2 2 2-2 2 2 2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".8"></path>
+            <path d="m349 12 2 2 2-2 2 2 2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".8"></path>
+          </svg>
+          <a class="whatsapp-card__button" href="https://wa.me/5585999999999" target="_blank" rel="noopener">
+            <img src="assets/whatsapp.svg" alt="">
+            (85) 9 9999-9999
+          </a>
+          <a class="whatsapp-card__social" href="https://www.instagram.com/partykabanas" target="_blank" rel="noopener">
+            <svg class="instagram-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M17.5 6.5h.01"></path>
+            </svg>
+            Acompanhe @partykabanas
+          </a>
+        </div>
+
+        <div class="contact__trust">
+          <div class="trust-item">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20 10c0 5.2-8 11-8 11s-8-5.8-8-11a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Atendimento em Fortaleza/CE</span>
+          </div>
+          <div class="trust-item">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 6v6l4 2"></path>
+              <circle cx="12" cy="12" r="9"></circle>
+            </svg>
+            <span>Atendimento rÃ¡pido e atencioso</span>
+          </div>
+          <div class="trust-item">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 3 20 7v5c0 5-3.4 8.5-8 9-4.6-.5-8-4-8-9V7l8-4Z"></path>
+              <path d="m9 12 2 2 4-5"></path>
+            </svg>
+            <span>SeguranÃ§a e confianÃ§a</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="rodape" aria-label="RodapÃ© Party Kabanas">
+    <div class="footer__inner">
+      <img class="footer__logo" src="assets/logo-harmonizada.png" alt="Party Kabanas">
+
+      <div class="footer__links">
+        <a class="footer__item" href="#">
+          <span>InÃ­cio</span>
+        </a>
+
+        <a class="footer__item" href="#sobre">
+          <span>Sobre</span>
+        </a>
+
+        <a class="footer__item" href="#como-funciona">
+          <span>Como funciona</span>
+        </a>
+
+        <a class="footer__item" href="#orcamento">
+          <span>Contato</span>
+        </a>
+      </div>
+
+      <div class="footer__links">
+        <a class="footer__item" href="https://www.instagram.com/partykabanas" target="_blank" rel="noopener">
+          <span class="footer__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M17.5 6.5h.01"></path>
+            </svg>
+          </span>
+        </a>
+
+        <a class="footer__item" href="https://wa.me/5585999999999" target="_blank" rel="noopener">
+          <span class="footer__icon" aria-hidden="true">
+            <img src="assets/whatsapp.svg" alt="">
+          </span>
+        </a>
+
+        <div class="footer__item">
+          <span class="footer__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M20 10c0 5.2-8 11-8 11s-8-5.8-8-11a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </span>
+          <span>Fortaleza/CE</span>
+        </div>
+
+        <div class="footer__item footer__copyright">
+          <span class="footer__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M15 9.5a4 4 0 1 0 0 5"></path>
+            </svg>
+          </span>
+          <span>Â© Party Kabanas. Todos os direitos reservados.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/5585999999999" target="_blank" rel="noopener" aria-label="Chamar a Party Kabanas no WhatsApp">
+    <img src="assets/whatsapp.svg" alt="">
+  </a>
+</body>
+</html>
+
